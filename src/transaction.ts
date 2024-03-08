@@ -117,7 +117,9 @@ const simulateTransaction = async(sponsored:boolean) => {
         transaction: tx,
         feePayerPublicKey: sponsored?feePayer.publicKey:undefined
     });
-    console.log(txResponse);
+
+    console.log("\nsuccess: ", txResponse.success);
+    console.log(`vm_status: ${txResponse.vm_status}\n`);
 
     if(sponsored){
         const finalBalance_feePayer = await getBalance(feePayer.accountAddress);
@@ -133,5 +135,4 @@ const simulateTransaction = async(sponsored:boolean) => {
 
 const sponsored = false;
 // submitSimpleTransaction(sponsored);
-// simulateTransaction(sponsored);
 simulateTransaction(sponsored);
